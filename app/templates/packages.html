@@ -1,0 +1,85 @@
+{% extends 'welcome.html' %}
+
+
+{% block content %}
+
+{% if user.is_superuser %}
+{% include 'adminbase.html' %}
+
+{% elif user.is_authenticated %}
+{% include 'customerbase.html' %}
+{% else %}
+{% include 'base.html' %}
+{% endif %}
+
+
+<script src="https://kit.fontawesome.com/dd32011c7e.js
+" crossorigin="anonymous"></script>
+
+                    
+
+<div class="container m-3" >
+    <div class="row">
+        <div class="col-md-50">
+     
+            <div class="row">
+    
+              {% for product in package %}
+                <div class="col-md-2">
+                 
+                    <div class="card">
+                      
+                        <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" style="height: 200px;" >
+                        <div class="card-body">
+                          
+    
+                        
+    
+                          
+                        </div>
+                        
+                        
+                        
+                        
+                        {% if user.is_superuser and user.is_authenticated %}
+                        <a href="{% url 'package_detail' product.id %}" class="btn btn-outline-primary btn-sm m-1">View</a>
+                       {% elif user.is_authenticated %}
+                       <a href="{% url 'book_appointment' product.id %}" class="btn btn-outline-primary btn-sm m-1">Book Tickets</a>                       
+
+                        <a href="{% url 'package_detail' product.id %}" class="btn btn-outline-primary btn-sm m-1">View</a>
+                        {% endif %}
+                        
+                        
+                        
+                        
+    
+    
+    
+                        
+                        
+                        
+                      </div>
+                      <br>
+                     </div>
+                     
+                {% endfor %}
+                
+                   
+    
+                
+                    
+    
+                </div>
+               
+            </div>
+    
+    
+    </div>     
+ 
+    
+
+</div>
+
+
+
+{% endblock %}

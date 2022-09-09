@@ -1,0 +1,118 @@
+
+{% extends 'welcome.html' %}
+
+
+{% block content %}
+
+
+{% include 'adminbase.html' %}
+
+<script src="https://kit.fontawesome.com/dd32011c7e.js" crossorigin="anonymous"></script>
+
+                   
+                  
+
+
+<div class="container m-2" >
+    <div class="row">
+        <div class="col-md-3">
+            
+              
+              
+             
+
+              {% if user.is_superuser %}
+
+              <div class="card" style="width: 18rem;">
+                
+                <li class="list-group-item">
+                  <a href="" class="nav-link active"> <i class="fa-solid fa-home"></i> Dashboard</a>
+                  </li>
+                <li class="list-group-item">
+                  <a href="{% url 'addmovie' %}" class="nav-link active"> <i class="fa-solid fa-list"></i> Add Movies</a>
+                  </li>
+
+                  <li class="list-group-item">
+                    <a href="{% url 'movieinfo' %}" class="nav-link active"> <i class="fa-solid fa-clock"></i> Set Time</a>
+                    </li>
+                  
+                    <li class="list-group-item">
+                      <a href="" class="nav-link active"> <i class="fa-solid fa-user"></i> Users</a>
+                      </li>
+                
+                    
+                  
+            
+                </ul>
+              </div>
+              {% endif %}
+
+              
+              
+              
+        </div>
+
+
+        
+    
+    <div class="col-md-9">
+     
+        <div class="row">
+
+          {% for product in movies %}
+            <div class="col-md-4">
+             
+                <div class="card">
+                  
+                    <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" style="height: 200px;" >
+                    <div class="card-body">
+                      <h5 class="card-title"> {{product.moviename}}</h5>
+                      
+
+                    
+
+                      
+                    </div>
+                    
+
+                   
+                   
+                    
+                    
+                    
+                    
+
+
+
+                    
+                    
+                    {% if user.is_superuser %}
+                              <a href="{% url 'deletemovie' product.id %}" class="btn btn-outline-primary btn-sm m-1">Delete</a>
+                              <a href="{% url 'updatemovie' product.id %}" class="btn btn-outline-primary btn-sm m-1">Update</a>
+                    {% elif user.is_active %}
+                    <a href="" class="btn btn-outline-primary btn-sm m-1">Add to cart</a>
+                    {% endif %}
+
+                  </div>
+                  <br>
+                 </div>
+                 
+            {% endfor %}
+            
+               
+
+            
+                
+
+            </div>
+           
+        </div>
+        
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}

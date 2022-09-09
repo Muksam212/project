@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title></title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    
+</head>
+<body>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+         
+          <h1 class="h2">Now Shohhwing</h1>
+           
+        </div>
+        <div class="col-md-9">
+      
+         <div class="row">
+ 
+           {% for product in movies %}
+             <div class="col-md-4">
+              
+                 <div class="card">
+                   
+                     <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" style="height: 200px;" >
+                     <div class="card-body">
+                       <h5 class="card-title">Category: {{product.moviename}}</h5>
+                       
+ 
+                     
+ 
+                       
+                     </div>
+                     <a href="{% url 'viewmovie' product.id %}" class="btn btn-outline-primary btn-sm m-1">Buy ticket</a>
+ 
+                    
+                    
+                     
+                     
+                     
+                     
+ 
+ 
+ 
+                     
+                     
+                   
+ 
+                   </div>
+                   <br>
+                  </div>
+                  
+             {% endfor %}
+             
+                
+ 
+             
+                 
+ 
+             </div>
+            
+         </div>
+        <canvas class="my-4 w-100" id="mychart" width="900" height="380"></canvas>
+      </main>
+</body>
+</html>
+{% endblock %}

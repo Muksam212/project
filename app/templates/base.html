@@ -1,0 +1,61 @@
+{% load static %}
+<html>
+    <head>
+        <title> Home </title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/index">Barahi Movies Cinema Hall</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/index">Home</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/About/">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/movielist/">All Movies</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+
+                       
+                       
+                    </ul>
+                    
+                      <!-- Left links -->
+                      <li class="nav-item">
+                      <button type="button" class="btn btn-primary me-3"> <a class="dropdown-item" href="{% url 'register' %}">Register</a></button>
+                      </li>
+
+                      <li class="nav-item">
+                        <button type="button" class="btn btn-primary me-3"> <a class="dropdown-item" href="{% url 'signin' %}">Signin</a>  
+
+                          
+                        </button>
+                        </li>
+                        
+                      </div>
+                    </div>
+                    
+      
+            </div>
+        </nav>
+        
+
+        {% block content %}
+        {% endblock %}
+        <script src="{%static 'js/jquery-1.11.2.min.js' %}"></script>
+        <script src="{%static 'js/bootstrap.min.js' %}"></script>
+    </body>
+</html>
